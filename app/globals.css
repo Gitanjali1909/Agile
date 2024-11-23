@@ -1,0 +1,127 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+.light-theme {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+.dark-theme {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  transition: background 0.3s ease, color 0.3s ease; 
+}
+
+
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  animation: moveShape 10s ease-in-out infinite, pulseShape 3s ease-in-out infinite;
+  opacity: 0.5; 
+  background: rgba(255, 255, 255, 0.4); 
+}
+@keyframes moveShape {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  25% {
+    transform: translateX(100px) translateY(50px);
+  }
+  50% {
+    transform: translateX(0) translateY(-100px);
+  }
+  75% {
+    transform: translateX(-100px) translateY(50px);
+  }
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes pulseShape {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  animation: moveParticle 10s infinite linear, pulseShape 3s ease-in-out infinite;
+  opacity: 0.5; 
+  background: rgba(255, 255, 255, 0.4); 
+}
+
+@keyframes moveParticle {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(100px, 50px);
+  }
+  50% {
+    transform: translate(0, -100px);
+  }
+  75% {
+    transform: translate(-100px, 50px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+.star {
+  position: absolute;
+  width: 6px; 
+  height: 6px;
+  background: rgba(255, 255, 255, 0.5); 
+  border-radius: 50%;
+  animation: twinkle 5s infinite;
+  opacity: 0.6; 
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
